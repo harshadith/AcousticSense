@@ -45,16 +45,26 @@ It utilizes an I2S MEMS digital microphone to capture high-fidelity acoustic emi
 
 **1. Clone the Repository**
 ```bash
-git clone [https://github.com/harshadith/AcousticSense.git](https://github.com/harshadith/AcousticSense.git)
+git clone https://github.com/harshadith/AcousticSense.git
 cd AcousticSense
+```
 
-2. Set Up the EnvironmentOpen the cloned directory in VS Code.Ensure the PlatformIO IDE extension is installed. PlatformIO will automatically read the platformio.ini file and download the required ESP32-S3 board dependencies.3. Install the ML Library
-Ensure your downloaded Edge Impulse Arduino library is placed inside the lib/ folder.PlaintextAcousticSense/
+**2. Set Up the Environment**
+
+*Open the cloned directory in VS Code.
+*Ensure the PlatformIO IDE extension is installed. PlatformIO will automatically read the platformio.ini file and download the required ESP32-S3 board dependencies.
+
+**3. Install the ML Library**
+Ensure your downloaded Edge Impulse Arduino library is placed inside the lib/ folder.
+AcousticSense/
  ├── lib/
  │   └── AcousticSense_v1_inferencing/  <-- Place the unzipped ML library here
  ├── src/
  │   └── main.cpp
  └── platformio.ini
-4. Build and Flash the Firmware
-Connect your ESP32-S3 via USB. Use the PlatformIO CLI or the VS Code UI shortcuts:Bashpio run --target upload
-🔌 Pinout & Wiring GuideCRITICAL: The INMP441 microphone requires a digital I2S connection to bypass analog electromagnetic interference common on factory floors. Ensure the L/R channel pin is grounded to lock the microphone to the left channel, which matches the software's I2S_CHANNEL_FMT_ONLY_LEFT configuration.ComponentComponent PinESP32-S3 PinNotesSSD1306 OLED (I2C)VCCGNDSCLSDA3V3GNDGPIO 9GPIO 8Continuous 3.3V powerCommon GroundStandard I2C ClockStandard I2C DataINMP441 (Audio)VDDGNDL/R3V3GNDGNDContinuous 3.3V powerCommon GroundCritical: Pull to GND for Left ChannelINMP441 (I2S Data)WSSCKSDGPIO 4GPIO 5GPIO 6Word Select (I2S Clock)Serial Clock (I2S BCLK)Serial Data (I2S Audio Stream)
+
+**4. Build and Flash the Firmware**
+Connect your ESP32-S3 via USB. Use the PlatformIO CLI or the VS Code UI shortcuts:
+```bash
+pio run --target upload
+```
